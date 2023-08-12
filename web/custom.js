@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchDataButton.addEventListener('click', async () => {
         try {
             const response = await fetch('https://diederik.builtwithdark.com/hello');
-            const data = response.text
+            const data = await response.text()
             contentElement.textContent = data;
         } catch (error) {
             console.error('Error fetching data:', error);
