@@ -9,8 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
 async function fetchData() {
     const contentElement = document.getElementById('commitp');
     try {
+
+      const paths = ['hello', 'github'];
+      const randomIndex = Math.floor(Math.random() * paths.length);
+
       const urlRegex = /https?:\/\/[^\s/$.?#].[^\s]*/g;
-      const response = await fetch('https://diederik.builtwithdark.com/hello');
+      const response = await fetch('https://diederik.builtwithdark.com/' + paths[randomIndex]);
       const data = await response.text();
       contentElement.innerHTML = data.toString()
         .replace(/^"|"$/g, '')    // Remove trailing and leading quotes
