@@ -18,6 +18,7 @@ async function fetchData() {
       const data = await response.text();
       contentElement.innerHTML = data.toString()
         .replace(/^"|"$/g, '')    // Remove trailing and leading quotes
+        .replace(/\\r\\n/g, '\\n') // Replace \r\n with \n
         .replace(/\\n/g, '<br>')  // newlines to <br>
         .replace(urlRegex, (url) => `<a href="${url}" target="_blank">${url}</a>`);  // Links
     } catch (error) {
